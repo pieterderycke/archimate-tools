@@ -10,3 +10,8 @@ Example:
 ```shell
 python archimate-export.py --output output.xlsx input_model.xml
 ```
+
+Export to RDF/XML:
+```shell
+python archimate-export.py --output output.rdf --format rdf input_model.xml
+```
