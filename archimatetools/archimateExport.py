@@ -10,7 +10,7 @@ import archimate
 parser = ArgumentParser(description="archimate-export is a tool that allows to export files in the ArchiMate Model Exchange File Format to a number of other file formats.")
 parser.add_argument('archimateFile', metavar="file", help="The file in  ArchiMate Model Exchange File Format to be used as input.")
 parser.add_argument("--output", "-o", help="The output file to use for the expert.", required=True)
-parser.add_argument("--format", "-f", choices=['rdf', 'xlsx'], default='xlsx', help="The requested output file format.", required=False)
+parser.add_argument("--format", "-f", choices=['xlsx', 'rdf', 'turtle'], default='xlsx', help="The requested output file format.", required=False)
 args = parser.parse_args()
 
 if(not os.path.isfile(args.archimateFile)):
@@ -44,7 +44,7 @@ if(args.format == "xlxs"):
     workbook.close()
 
     print('%s elements export to \"%s\"' % (len(elements), args.output))
-elif(args.format == "rdf"):
+elif(args.format == "rdf" or args.format == 'turtle'):
     graph = Graph()
 
     ARCHIMATE = Namespace('http://www.opengroup.org/xsd/archimate/3.0/')
@@ -67,6 +67,8 @@ elif(args.format == "rdf"):
 
     graph.bind("archimate", ARCHIMATE)
 
-    graph.serialize(args.output)
+    graphformat = {'rdf': 'xml', 'turtle': 'turtle'}
+
+    graph.serialize(args.output, format=graphformat[args.format])
 
     print("Archimate model exported in RDF/XML format.")
