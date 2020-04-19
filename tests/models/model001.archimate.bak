@@ -6,9 +6,7 @@
     <element xsi:type="archimate:ApplicationComponent" name="Application Component 1" id="5dd448fb-9323-4e9a-a9e5-fa5c9d05dfb7"/>
     <element xsi:type="archimate:ApplicationComponent" name="Application Component 2" id="70d1496b-eb61-4ce2-9076-0e0c3de3f460"/>
     <element xsi:type="archimate:ApplicationService" name="Service" id="625b594e-db58-4992-9774-daae1fb623ff"/>
-    <element xsi:type="archimate:ApplicationInterface" name="Application Interface" id="b6d90dd9-d077-44d8-a1f1-a84fd477a9af">
-      <property key="api-name" value="test2"/>
-    </element>
+    <element xsi:type="archimate:ApplicationInterface" name="Application Interface" id="b6d90dd9-d077-44d8-a1f1-a84fd477a9af"/>
     <element xsi:type="archimate:ApplicationInterface" name="API" id="6926d44d-c906-4a7c-8ba4-30a52d7b11fa">
       <property key="api-name" value="test-api"/>
     </element>

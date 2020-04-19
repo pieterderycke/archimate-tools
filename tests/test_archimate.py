@@ -8,5 +8,11 @@ class TestArchimateModel001(unittest.TestCase):
         self.assertEqual(len(model.readElements()), 30)
         self.assertEqual(len(model.readRelationships()), 39)
 
+    def test_loadProperties(self):
+        model = ArchimateModel("tests/models/model001.xml")
+
+        element = next(filter(lambda x: x.name == "API", model.readElements()))
+        self.assertEqual(element.properties["api-name"], "test-api")
+
 if __name__ == '__main__':
     unittest.main()

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns="http://www.opengroup.org/xsd/archimate/3.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengroup.org/xsd/archimate/3.0/ http://www.opengroup.org/xsd/archimate/3.1/archimate3_Diagram.xsd" identifier="id-7966b50b-6f04-4f2d-9d31-b88fcc6dca29">
+  <name xml:lang="en">(new model)</name>
+  <elements>
+    <element identifier="id-5dd448fb-9323-4e9a-a9e5-fa5c9d05dfb7" xsi:type="ApplicationComponent">
+      <name xml:lang="en">Application Component 1</name>
+    </element>
+    <element identifier="id-70d1496b-eb61-4ce2-9076-0e0c3de3f460" xsi:type="ApplicationComponent">
+      <name xml:lang="en">Application Component 2</name>
+    </element>
+    <element identifier="id-625b594e-db58-4992-9774-daae1fb623ff" xsi:type="ApplicationService">
+      <name xml:lang="en">Service</name>
+    </element>
+    <element identifier="id-b6d90dd9-d077-44d8-a1f1-a84fd477a9af" xsi:type="ApplicationInterface">
+      <name xml:lang="en">Application Interface</name>
+      <properties>
+        <property propertyDefinitionRef="propid-1">
+          <value xml:lang="en">test2</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="id-6926d44d-c906-4a7c-8ba4-30a52d7b11fa" xsi:type="ApplicationInterface">
+      <name xml:lang="en">API</name>
+      <properties>
+        <property propertyDefinitionRef="propid-1">
+          <value xml:lang="en">test-api</value>
+        </property>
+      </properties>
+    </element>
+  </elements>
+  <relationships>
+    <relationship identifier="id-6bef4e21-6948-4d4a-a5b1-bc36bdfa1c72" source="id-70d1496b-eb61-4ce2-9076-0e0c3de3f460" target="id-625b594e-db58-4992-9774-daae1fb623ff" xsi:type="Realization" />
+    <relationship identifier="id-8a980109-fdb0-4b64-b69b-dc3a03f5a742" source="id-625b594e-db58-4992-9774-daae1fb623ff" target="id-5dd448fb-9323-4e9a-a9e5-fa5c9d05dfb7" xsi:type="Serving" />
+    <relationship identifier="id-93e3e3d3-0241-4d78-b2c7-a4a89bd011e1" source="id-70d1496b-eb61-4ce2-9076-0e0c3de3f460" target="id-b6d90dd9-d077-44d8-a1f1-a84fd477a9af" xsi:type="Composition" />
+  </relationships>
+  <propertyDefinitions>
+    <propertyDefinition identifier="propid-1" type="string">
+      <name>api-name</name>
+    </propertyDefinition>
+  </propertyDefinitions>
+  <views>
+    <diagrams>
+      <view identifier="id-2ab9936e-1e8d-4508-8955-bb185256f0dc" xsi:type="Diagram">
+        <name xml:lang="en">Default View</name>
+        <node identifier="id-dff6646a-cd21-4f4e-b3be-4537f9dab4fb" elementRef="id-5dd448fb-9323-4e9a-a9e5-fa5c9d05dfb7" xsi:type="Element" x="240" y="240" w="120" h="55">
+          <style>
+            <fillColor r="181" g="255" b="255" a="100" />
+            <lineColor r="92" g="92" b="92" a="100" />
+            <font name="Segoe UI" size="9">
+              <color r="0" g="0" b="0" />
+            </font>
+          </style>
+        </node>
+        <node identifier="id-b1e2def4-828f-4fe2-a0ec-a0fc65830257" elementRef="id-70d1496b-eb61-4ce2-9076-0e0c3de3f460" xsi:type="Element" x="711" y="237" w="120" h="55">
+          <style>
+            <fillColor r="181" g="255" b="255" a="100" />
+            <lineColor r="92" g="92" b="92" a="100" />
+            <font name="Segoe UI" size="9">
+              <color r="0" g="0" b="0" />
+            </font>
+          </style>
+        </node>
+        <node identifier="id-f1e82d42-552c-48a8-847f-a13fbdf83fae" elementRef="id-625b594e-db58-4992-9774-daae1fb623ff" xsi:type="Element" x="468" y="237" w="120" h="55">
+          <style>
+            <fillColor r="181" g="255" b="255" a="100" />
+            <lineColor r="92" g="92" b="92" a="100" />
+            <font name="Segoe UI" size="9">
+              <color r="0" g="0" b="0" />
+            </font>
+          </style>
+        </node>
+        <node identifier="id-14818019-13f8-4acf-969c-27a272cae196" elementRef="id-b6d90dd9-d077-44d8-a1f1-a84fd477a9af" xsi:type="Element" x="711" y="360" w="120" h="55">
+          <style>
+            <fillColor r="181" g="255" b="255" a="100" />
+            <lineColor r="92" g="92" b="92" a="100" />
+            <font name="Segoe UI" size="9">
+              <color r="0" g="0" b="0" />
+            </font>
+          </style>
+        </node>
+        <node identifier="id-6a2a8c72-5f0c-4cd4-a726-03a310df13b2" elementRef="id-6926d44d-c906-4a7c-8ba4-30a52d7b11fa" xsi:type="Element" x="444" y="336" w="120" h="55">
+          <style>
+            <fillColor r="181" g="255" b="255" a="100" />
+            <lineColor r="92" g="92" b="92" a="100" />
+            <font name="Segoe UI" size="9">
+              <color r="0" g="0" b="0" />
+            </font>
+          </style>
+        </node>
+        <connection identifier="id-6918c6b5-c67f-4af1-8bef-159038e0e421" relationshipRef="id-6bef4e21-6948-4d4a-a5b1-bc36bdfa1c72" xsi:type="Relationship" source="id-b1e2def4-828f-4fe2-a0ec-a0fc65830257" target="id-f1e82d42-552c-48a8-847f-a13fbdf83fae">
+          <style>
+            <lineColor r="0" g="0" b="0" />
+            <font name="Segoe UI" size="9">
+              <color r="0" g="0" b="0" />
+            </font>
+          </style>
+        </connection>
+        <connection identifier="id-f2ac0ab8-78c0-41e8-83d0-bd152e8190f7" relationshipRef="id-93e3e3d3-0241-4d78-b2c7-a4a89bd011e1" xsi:type="Relationship" source="id-b1e2def4-828f-4fe2-a0ec-a0fc65830257" target="id-14818019-13f8-4acf-969c-27a272cae196">
+          <style>
+            <lineColor r="0" g="0" b="0" />
+            <font name="Segoe UI" size="9">
+              <color r="0" g="0" b="0" />
+            </font>
+          </style>
+        </connection>
+        <connection identifier="id-419aa793-803c-4d01-bf75-bdcae8877528" relationshipRef="id-8a980109-fdb0-4b64-b69b-dc3a03f5a742" xsi:type="Relationship" source="id-f1e82d42-552c-48a8-847f-a13fbdf83fae" target="id-dff6646a-cd21-4f4e-b3be-4537f9dab4fb">
+          <style>
+            <lineColor r="0" g="0" b="0" />
+            <font name="Segoe UI" size="9">
+              <color r="0" g="0" b="0" />
+            </font>
+          </style>
+        </connection>
+      </view>
+    </diagrams>
+  </views>
+</model>

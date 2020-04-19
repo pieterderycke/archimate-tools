@@ -5,9 +5,9 @@ import xlsxwriter
 from rdflib import Graph, Literal, BNode, RDF, URIRef, Namespace
 from rdflib.namespace import DC, FOAF
 
-import archimate
+from archimatetools.archimate import ArchimateModel
 
-parser = ArgumentParser(description="archimate-export is a tool that allows to export files in the ArchiMate Model Exchange File Format to a number of other file formats.")
+parser = ArgumentParser(description="archimate export is a tool that allows to export files in the ArchiMate Model Exchange File Format to a number of other file formats.")
 parser.add_argument('archimateFile', metavar="file", help="The file in  ArchiMate Model Exchange File Format to be used as input.")
 parser.add_argument("--output", "-o", help="The output file to use for the expert.", required=True)
 parser.add_argument("--format", "-f", choices=['xlsx', 'rdf', 'turtle'], default='xlsx', help="The requested output file format.", required=False)
@@ -17,7 +17,7 @@ if(not os.path.isfile(args.archimateFile)):
     print('The file \"%s\" does not exist.' % args.archimateFile)
     exit(1)
 
-model = archimate.ArchimateModel(args.archimateFile)
+model = ArchimateModel(args.archimateFile)
 
 elements = model.readElements()
 relationships = model.readRelationships()

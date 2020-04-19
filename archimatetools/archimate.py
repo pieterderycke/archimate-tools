@@ -146,10 +146,11 @@ def getArchimateAspect(archimateElement):
     return switcher.get(archimateElement, "Invalid Archimate Element")
 
 class Element:
-    def __init__(self, identifier, name, elementType):
+    def __init__(self, identifier, name, elementType, properties):
         self.identifier = identifier
         self.name = name
         self.elementType = elementType
+        self.properties = properties
 
     @property
     def layer(self):
@@ -166,6 +167,11 @@ class Relationship:
         self.target = target
         self.relationshipType = relationshipType
 
+class PropertyDefinition:
+    def __init__(self, identifier, propType, name):
+        self.identifier = identifier
+        self.type = propType
+        self.name = name
 
 ns = {'archimate': 'http://www.opengroup.org/xsd/archimate/3.0/',
     'xsi': 'http://www.w3.org/2001/XMLSchema-instance'}
@@ -176,6 +182,8 @@ class ArchimateModel:
         self._xmlRoot = tree.getroot()
 
     def readElements(self):
+        propertyDefinitions = self.readPropertyDefinitions()
+
         elements = self._xmlRoot.find('archimate:elements', ns)
 
         items = []
@@ -184,7 +192,20 @@ class ArchimateModel:
             elementType = element.attrib['{%s}type' % ns['xsi']] # The Python XML API is more cumbersome for attributes part of namespaces
             name = element.find("archimate:name[@{http://www.w3.org/XML/1998/namespace}lang='en']", ns).text
 
-            items.append(Element(identifier, name, elementType))
+            properties = {}
+
+            propertiesElement = element.find("archimate:properties", ns)
+            if propertiesElement is not None:
+                for propertyElement in propertiesElement.findall("archimate:property", ns):
+                    propertyReference = propertyElement.attrib['propertyDefinitionRef']
+                    propertyValue = propertyElement.find("archimate:value[@{http://www.w3.org/XML/1998/namespace}lang='en']", ns).text
+
+                    propertyDefinition = next(p for p in propertyDefinitions if p.identifier == propertyReference)
+
+                    properties[propertyDefinition.name] = propertyValue
+
+
+            items.append(Element(identifier, name, elementType, properties))
 
         return items
     
@@ -199,5 +220,18 @@ class ArchimateModel:
             relationshipType = element.attrib['{%s}type' % ns['xsi']] # The Python XML API is more cumbersome for attributes part of namespaces
 
             items.append(Relationship(identifier, source, target, relationshipType))
+
+        return items
+
+    def readPropertyDefinitions(self):
+        elements = self._xmlRoot.find('archimate:propertyDefinitions', ns)
+
+        items = []
+        for element in elements.findall('archimate:propertyDefinition', ns):
+            identifier = element.get("identifier")
+            propType = element.get("type")
+            name = element.find("archimate:name", ns).text
+
+            items.append(PropertyDefinition(identifier, propType, name))
 
         return items
